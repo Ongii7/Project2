@@ -54,7 +54,12 @@ void getAmountPerMilesDriven(double* totalExpense) {
     char v = inputValidate2();
     if (v == 'Y' || v == 'y') {
         printf("Please enter # of miles driven: ");
-        scanf("%f", &miles);
+        do {
+            scanf("%f", &miles);
+            if (miles < 0) {
+                printf("Please enter a positive number!\n: ");
+            }
+        } while (miles < 0);
         *totalExpense = *totalExpense + (miles*0.27);
     }
 };
