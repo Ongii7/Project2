@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// add round-trip and initialize it
+// add round-trip and declare it
 
 
 // ask user if they have round trip airfare
@@ -9,3 +9,16 @@
 // if they do then ask how much it costs
 
 // add it to the total expense
+
+
+
+
+// add Car Rental and declare it 
+
+
+//ask if they rented a car
+
+// if they did, then ask the cost
+
+// add the cost to the total expense
+
