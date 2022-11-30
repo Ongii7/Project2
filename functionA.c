@@ -39,3 +39,10 @@ double inputTimeValidation() {
     } while (1);
     return time;
 };
+
+void getDepartureAndArriveTime(double* departure, double* arrival) {
+    printf("Please enter departure time: ");
+    *departure = inputTimeValidation();
+    printf("Please enter arrival time: ");
+    *arrival = inputTimeValidation();
+};
