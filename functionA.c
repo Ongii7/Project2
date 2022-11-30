@@ -1,9 +1,9 @@
-int inputCheckInt(int input) {
-    int i;
+int inputCheckInt() {
+    int i, input;
     do {
         i = scanf("%d", &input);
         if (i != 1) {
-            printf("Invalid input!\n");
+            printf("Invalid input!\n: ");
             scanf("%*s");
             // clear input buffer
             while (getchar() != '\n')
@@ -16,11 +16,26 @@ int inputCheckInt(int input) {
 void getTotDaysOnTrip(int* totalDate) {
     printf("Please enter number of day on the trip:");
     do {
-        totalDate = inputCheckInt(totalDate);
-        if (totalDate > 0) {
-            break;
+        *totalDate = inputCheckInt();
+        if (totalDate < 1) {
+            printf("Please enter at least 1 day or more!\n: ");
         } else {
-            printf("Please enter at least 1 day or more!\n");
+            break;
         }
     } while (1);
+};
+
+double inputTimeValidation() {
+    double i, time;
+    do {
+        scanf("%f", &time);
+        i = time - (int)time;
+        // check if minutes > 59, check if time is more than 24 hours
+        if (i > 0.59 || time > 23) {
+            printf("Please enter a valid time!\n: ");
+        } else {
+            break;
+        }
+    } while (1);
+    return time;
 };
