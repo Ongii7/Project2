@@ -1,3 +1,5 @@
+// #include "function.h";
+
 // int inputCheckInt() {
 //     int i, input;
 //     do {
@@ -50,6 +52,7 @@ void getDepartureAndArriveTime(double* departure, double* arrival) {
 
 void getAmountPerMilesDriven(double* totalExpense) {
     double miles;
+    double const EXPENSE_PER_MILES = 0.27;
     printf("Is it a private vehicle? y/n");
     char v = inputValidate2();
     if (v == 'Y' || v == 'y') {
@@ -60,6 +63,6 @@ void getAmountPerMilesDriven(double* totalExpense) {
                 printf("Please enter a positive number!\n: ");
             }
         } while (miles < 0);
-        *totalExpense = *totalExpense + (miles*0.27);
+        *totalExpense = *totalExpense + (miles*EXPENSE_PER_MILES);
     }
 };
