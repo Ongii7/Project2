@@ -2,15 +2,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-double inputCost(double);
+double inputCost(double*);
 char inputChoice(char);
-void getHotelFee(int, double*,double*,double*,double*);
+void getHotelFee(int*, double*,double*,double*,double*);
 void getMealFee(double*,double*,double*,double*,double*,double*);
 
-double inputCost() {
+double inputCost(cost) {
     double cost;
     do {
-        // *totalDate = inputCheckInt();
         scanf("%d", cost);
         if (*cost < 0) {
             printf("Please enter an dollar amount greater than 0.\nWhat was the cost to stay the night? ");
@@ -21,7 +20,7 @@ double inputCost() {
     } while (1);
 }
 
-char inputChoice(){
+char inputChoice(letter){
     char letter;
     do 
     {
@@ -37,7 +36,13 @@ char inputChoice(){
     } while (1);
 }
 
-void getHotelFee(tot_expense,tot_day_on_trip,tot_allowable_expense, tot_reimbursement,tot_amount_save){
+void getHotelFee(tot_expense, 
+                tot_day_on_trip, 
+                tot_allowable_expense, 
+                tot_reimbursement,
+                tot_amount_save)
+{
+
     const double MAX_EXP = 90.00;
     double hotel_cost;
 
@@ -45,20 +50,20 @@ void getHotelFee(tot_expense,tot_day_on_trip,tot_allowable_expense, tot_reimburs
 
     for (int i = 0; i < (tot_day_on_trip -1); i++)  //Hotel charges per night stay days-1=nights stayed
     {
-        tot_allowable_expense += MAX_EXP;
+        *tot_allowable_expense += MAX_EXP;
 
         printf << "What were the costs for night #%d?\n", (i + 1);
         hotel_cost = inputCost(hotel_cost);
 
-        tot_expense += hotel_cost;
+        *tot_expense += hotel_cost;
 
         if (hotel_cost > MAX_EXP)
         {
-            tot_reimbursement += (hotel_cost - MAX_EXP);
+            *tot_reimbursement += (hotel_cost - MAX_EXP);
         }
         else if (hotel_cost <= MAX_EXP)
         {
-            tot_amount_save += hotel_cost;
+            *tot_amount_save += hotel_cost;
         }
         
     }
@@ -85,62 +90,62 @@ void getMealFee(tot_expense,
 
     char yes_no = inputChoice(yes_no);
 
-    tot_expense += meal_cost;
+    *tot_expense += meal_cost;
 
     if (yes_no == 'Y' || yes_no == 'y')
     {
         printf("How much was your meal? ");
         meal_cost = inputCost(meal_cost);
 
-        tot_expense += meal_cost;
+        *tot_expense += meal_cost;
 
         if (depart_time < 7)
         {
-            tot_allowable_expense += MAX_BREAKFAST;
+            *tot_allowable_expense += MAX_BREAKFAST;
 
             if (meal_cost > MAX_BREAKFAST)
             {
-                tot_reimbursement += (meal_cost - MAX_BREAKFAST);
+                *tot_reimbursement += (meal_cost - MAX_BREAKFAST);
             }
             else if (meal_cost <= MAX_BREAKFAST)
             {
-                tot_amount_save += meal_cost;
+                *tot_amount_save += meal_cost;
             }
         
         }
 
         else if (depart_time >= 7 && depart_time < 12)
         {
-            tot_allowable_expense += MAX_LUNCH;
+            *tot_allowable_expense += MAX_LUNCH;
 
             if (meal_cost > MAX_LUNCH)
             {
-                tot_reimbursement += (meal_cost - MAX_LUNCH);
+                *tot_reimbursement += (meal_cost - MAX_LUNCH);
             }
             else if (meal_cost <= MAX_LUNCH)
             {
-                tot_amount_save += meal_cost;
+                *tot_amount_save += meal_cost;
             }
             
         }
         
         else if (depart_time >= 12 && depart_time < 18)
         {
-            tot_allowable_expense += MAX_DINNER;
+            *tot_allowable_expense += MAX_DINNER;
 
             if (meal_cost > MAX_DINNER)
             {
-                tot_reimbursement += (meal_cost - MAX_DINNER);
+                *tot_reimbursement += (meal_cost - MAX_DINNER);
             }
             else if (meal_cost <= MAX_DINNER)
             {
-                tot_amount_save += meal_cost;
+                *tot_amount_save += meal_cost;
             }
             
         }
         else if (depart_time >= 18)
         {
-            tot_reimbursement += meal_cost;
+            *tot_reimbursement += meal_cost;
         }
 
     }
@@ -151,68 +156,65 @@ void getMealFee(tot_expense,
 
     char yes_no = inputChoice(yes_no);
 
-    tot_expense += meal_cost;
+    *tot_expense += meal_cost;
 
     if (yes_no == 'Y' || yes_no == 'y')
     {
         printf("How much was your meal? ");
         meal_cost = inputCost(meal_cost);
 
-        tot_expense += meal_cost;
+        *tot_expense += meal_cost;
 
         if (depart_time < 7)
         {
-            tot_allowable_expense += MAX_BREAKFAST;
+            *tot_allowable_expense += MAX_BREAKFAST;
 
             if (meal_cost > MAX_BREAKFAST)
             {
-                tot_reimbursement += (meal_cost - MAX_BREAKFAST);
+                *tot_reimbursement += (meal_cost - MAX_BREAKFAST);
             }
             else if (meal_cost <= MAX_BREAKFAST)
             {
-                tot_amount_save += meal_cost;
+                *tot_amount_save += meal_cost;
             }
         
         }
 
         else if (depart_time >= 7 && depart_time < 12)
         {
-            tot_allowable_expense += MAX_LUNCH;
+            *tot_allowable_expense += MAX_LUNCH;
 
             if (meal_cost > MAX_LUNCH)
             {
-                tot_reimbursement += (meal_cost - MAX_LUNCH);
+                *tot_reimbursement += (meal_cost - MAX_LUNCH);
             }
             else if (meal_cost <= MAX_LUNCH)
             {
-                tot_amount_save += meal_cost;
+                *tot_amount_save += meal_cost;
             }
             
         }
         
         else if (depart_time >= 12 && depart_time < 18)
         {
-            tot_allowable_expense += MAX_DINNER;
+            *tot_allowable_expense += MAX_DINNER;
 
             if (meal_cost > MAX_DINNER)
             {
-                tot_reimbursement += (meal_cost - MAX_DINNER);
+                *tot_reimbursement += (meal_cost - MAX_DINNER);
             }
             else if (meal_cost <= MAX_DINNER)
             {
-                tot_amount_save += meal_cost;
+                *tot_amount_save += meal_cost;
             }
             
         }
         else if (depart_time >= 18)
         {
-            tot_reimbursement += meal_cost;
+            *tot_reimbursement += meal_cost;
         }
 
-    }
-
-    
-    
+    }    
     
 }
 
