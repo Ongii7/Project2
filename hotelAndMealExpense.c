@@ -49,24 +49,20 @@ void getHotelFee(tot_expense,
 
     printf ("\nPlease enter your hotel expenses. \nThe company will cover costs up to $90 per night.\n");
 
-    for (int i = 0; i < (tot_day_on_trip -1); i++)  //Hotel charges per night stay days-1=nights stayed
+    *tot_allowable_expense += MAX_EXP;
+
+    printf("What were the costs for night #%d?\n"), (i + 1);
+    hotel_cost = inputCost(hotel_cost);
+
+    *tot_expense += hotel_cost;
+
+    if (hotel_cost > MAX_EXP)
     {
-        *tot_allowable_expense += MAX_EXP;
-
-        printf("What were the costs for night #%d?\n"), (i + 1);
-        hotel_cost = inputCost(hotel_cost);
-
-        *tot_expense += hotel_cost;
-
-        if (hotel_cost > MAX_EXP)
-        {
-            *tot_reimbursement += (hotel_cost - MAX_EXP);
-        }
-        else if (hotel_cost <= MAX_EXP)
-        {
-            *tot_amount_save += hotel_cost;
-        }
-        
+        *tot_reimbursement += (hotel_cost - MAX_EXP);
+    }
+    else if (hotel_cost <= MAX_EXP)
+    {
+        *tot_amount_save += hotel_cost;
     }
     
 }
