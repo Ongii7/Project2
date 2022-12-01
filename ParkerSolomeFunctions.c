@@ -4,9 +4,9 @@
 // Parking fees function
 void getParkingFee(double* tot_expense, int* tot_day_on_trip, double* tot_allowable_expense, double* tot_reimbursement, double* tot_amount_save) {
     double parkFee = -1.0;
-    printf("Enter total of parking fees from trip: ");
+    printf("\nEnter total of parking fees from trip:\n ");
     do {
-        scanf("%f\n", &parkFee);
+        scanf("%lf", &parkFee);
         if (parkFee < 0) {
             printf("Please enter a positive number!\n ");
         }
@@ -18,7 +18,7 @@ void getParkingFee(double* tot_expense, int* tot_day_on_trip, double* tot_allowa
     } else if(parkFee < (*tot_day_on_trip * 6.0)) {                     // If parking fees were less than what the company can cover
         *tot_amount_save += ((*tot_day_on_trip * 6.0) - parkFee);       // Business person saved this much money
     }
-}
+};
 
 // Taxi fees function
 void getTaxiFee(double* tot_expense, int* tot_day_on_trip, double* tot_allowable_expense, double* tot_reimbursement, double* tot_amount_save) {
@@ -26,7 +26,7 @@ void getTaxiFee(double* tot_expense, int* tot_day_on_trip, double* tot_allowable
     double taxiFee = -1.0;
     printf("Did you take any taxis on this trip? y/n\n");
     do {
-        scanf("%c\n", &answer);
+        scanf(" %c", &answer);
         if(answer != 'y' && answer != 'Y' && answer != 'n' && answer != 'N') {
             printf("Please input a valid answer\n");
         } 
@@ -34,7 +34,7 @@ void getTaxiFee(double* tot_expense, int* tot_day_on_trip, double* tot_allowable
     if(answer == 'y' || answer == 'Y') {
         printf("Enter how much you spent on taxis: ");
         do {
-            scanf("%f\n", taxiFee);
+            scanf("%lf", &taxiFee);
             if(taxiFee < 0) {
                 printf("Please enter a positive number!\n");
             } 
@@ -47,17 +47,17 @@ void getTaxiFee(double* tot_expense, int* tot_day_on_trip, double* tot_allowable
             *tot_amount_save += ((*tot_day_on_trip * 10.0) - taxiFee);      // How much business person saved
         }
     }
-}
+};
 
 //Conference or seminar registration fees
 void getConferenceAndRegistrateFee(double* tot_expense) {
     double conferenceFee = -1.0;
     printf("Enter your conference or seminar fees: ");
     do {
-        scanf("%f\n", &conferenceFee);
+        scanf("%lf", &conferenceFee);
         if(conferenceFee < 0) {
             printf("Please enter a positive number!\n");
         }
     } while(conferenceFee < 0);
     *tot_expense += conferenceFee;
-}
+};

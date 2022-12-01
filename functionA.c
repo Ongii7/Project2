@@ -28,10 +28,10 @@ void getTotDaysOnTrip(int* totalDate) {
     } while (1);
 };
 
-double inputTimeValidation() {
+double inputTimeValidation(){
     double i, time;
     do {
-        scanf("%f", &time);
+        scanf("%lf", &time);
         i = time - (int)time;
         // check if minutes > 59, check if time is more than 24 hours
         if (i > 0.59 || time > 23) {
@@ -53,14 +53,15 @@ void getDepartureAndArriveTime(double* departure, double* arrival) {
 void getAmountPerMilesDriven(double* totalExpense) {
     double miles;
     double const EXPENSE_PER_MILES = 0.27;
-    printf("Is it a private vehicle? y/n");
-    char v = inputValidate2();
+    printf("\nIs it a private vehicle? y/n");
+    char v;
+    scanf(" %c", &v);
     if (v == 'Y' || v == 'y') {
-        printf("Please enter # of miles driven: ");
+        printf("\nPlease enter # of miles driven: ");
         do {
-            scanf("%f", &miles);
+            scanf("%lf", &miles);
             if (miles < 0) {
-                printf("Please enter a positive number!\n: ");
+                printf("\nPlease enter a positive number!: ");
             }
         } while (miles < 0);
         *totalExpense = *totalExpense + (miles*EXPENSE_PER_MILES);
