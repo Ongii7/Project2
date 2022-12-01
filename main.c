@@ -4,34 +4,34 @@
 
 int main(void) {
     //call total number of days spent on the trip
-    getTotDaysOnTrip(tot_day_on_trip);
+    getTotDaysOnTrip(&tot_day_on_trip);
 
     //call time of departure on first day of trip and arrival back home of last day of trip
-    getDepartureAndArrivalTime(depart_time, arrival_time);
+    getDepartureAndArriveTime(&depart_time, &arrival_time);
 
     //amount of any round-trip airfare
-    getRoundTripAirFare(tot_expense);
+    getRoundTripAirFare(&tot_expense);
 
     //amount of car rentals
-    getCarRentals(tot_expense);
+    getCarRentals(&tot_expense);
 
     //miles driven (if private vehicle was used)
-    getPrivateVehicleUse(tot_expense);
+    getAmountPerMilesDriven(&tot_expense);
 
     //parking fees (company allows up to $6 a day)
-    getParkingFee(tot_expense, tot_day_on_trip, tot_allowable_expense, tot_reimbursement, tot_amount_save);
+    getParkingFee(&tot_expense, &tot_day_on_trip, &tot_allowable_expense, &tot_reimbursement, &tot_amount_save);
 
     //taxi fees if any taxi was used during the trip (allows up to $10 a day)
-    getTaxiFee(tot_expense, tot_day_on_trip, tot_allowable_expense, tot_reimbursement, tot_amount_save);
+    getTaxiFee(&tot_expense, &tot_day_on_trip, &tot_allowable_expense, &tot_reimbursement, &tot_amount_save);
 
     //conference or seminar registration fees
-    getConferenceAndRegistrateFee(tot_expense);
+    getConferenceAndRegistrateFee(&tot_expense);
 
     //hotel expenses (allows up to $90 a day)
-    getHotelFee(tot_expense, tot_day_on_trip, tot_allowable_expense, tot_reimbursement, tot_amount_save);
+    //getHotelFee(tot_expense, tot_day_on_trip, tot_allowable_expense, tot_reimbursement, tot_amount_save);
 
     //the amount of each meal eaten
-    getMealFee(tot_expense, depart_time, tot_allowable_expense, tot_reimbursement, tot_amount_save, arrival_time);
+    //getMealFee(tot_expense, depart_time, tot_allowable_expense, tot_reimbursement, tot_amount_save, arrival_time);
 
     displayTot(tot_expense, tot_allowable_expense, tot_reimbursement, tot_amount_save);
 
