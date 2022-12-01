@@ -29,8 +29,9 @@ char inputChoice(letter){
         {
             break;
         }
-        else{
-            printf("Please enter 'Y' or 'N'")
+        else
+        {
+            printf("Please enter 'Y' or 'N'");
         }
         
     } while (1);
@@ -52,7 +53,7 @@ void getHotelFee(tot_expense,
     {
         *tot_allowable_expense += MAX_EXP;
 
-        printf << "What were the costs for night #%d?\n", (i + 1);
+        printf("What were the costs for night #%d?\n"), (i + 1);
         hotel_cost = inputCost(hotel_cost);
 
         *tot_expense += hotel_cost;
